@@ -1,19 +1,19 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: "aks-f7fb"
+  name: "website"
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: "aks-f7fb"
+      app: "website"
   template:
     metadata:
       labels:
-        app: "aks-f7fb"
+        app: "website"
     spec:
       containers:
-        - name: "aks-f7fb"
+        - name: "website"
           image: "willclark.azurecr.io/aks"
           ports:
           - containerPort: 80
