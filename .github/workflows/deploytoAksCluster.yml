@@ -24,15 +24,15 @@ jobs:
     
     - name: Create namespace
       run: |
-        namespacePresent=`kubectl get namespace | grep aksa767 | wc -l`
+        namespacePresent=`kubectl get namespace | grep website | wc -l`
         if [ $namespacePresent -eq 0 ]
         then
-            echo `kubectl create namespace aksa767`
+            echo `kubectl create namespace website`
         fi
 
     - uses: azure/k8s-create-secret@v1
       with:
-        namespace: aksa767
+        namespace: website
         container-registry-url: willclark.azurecr.io
         container-registry-username: ${{ secrets.acr_willclark_username }}
         container-registry-password: ${{ secrets.acr_willclark_password }}
@@ -40,7 +40,7 @@ jobs:
        
     - uses: azure/k8s-deploy@v1
       with:
-        namespace: aksa767
+        namespace: website
         manifests: |
           manifests/deployment-1.yml
           manifests/service-1.yml
