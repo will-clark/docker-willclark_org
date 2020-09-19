@@ -42,8 +42,8 @@ jobs:
       with:
         namespace: website
         manifests: |
-          manifests/deployment-1.yml
-          manifests/service-1.yml
+          manifests/deployment.yml
+          manifests/service.yml
         images: |
           willclark.azurecr.io/aks:${{ github.sha }}
         imagepullsecrets: |
